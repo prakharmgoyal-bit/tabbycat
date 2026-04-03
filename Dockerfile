@@ -27,9 +27,11 @@ RUN git config --global url."https://".insteadOf git://
 # Install our node/python requirements
 RUN pip install pipenv
 RUN pipenv install --system
-RUN pip install autobahn networkx async_timeout
+RUN pip install autobahn networkx async_timeout gunicorn
 RUN npm ci --only=production
 
 # Compile all the static files
 RUN npm run build
 RUN python ./tabbycat/manage.py collectstatic --noinput -v 0
+
+CMD gunicorn tabbycat.wsgi:application --bind 0.0.0.0:$PORT
