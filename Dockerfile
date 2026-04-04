@@ -28,7 +28,7 @@ RUN git config --global url."https://".insteadOf git://
 # Install our node/python requirements
 RUN pip install pipenv
 RUN pipenv install --system
-RUN pip install autobahn networkx async_timeout dj-database-url daphne
+RUN pip install autobahn networkx async_timeout dj-database-url daphne resend
 RUN npm ci --only=production
 
 # Compile all the static files
