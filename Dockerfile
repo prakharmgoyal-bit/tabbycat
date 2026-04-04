@@ -27,7 +27,7 @@ RUN git config --global url."https://".insteadOf git://
 # Install our node/python requirements
 RUN pip install pipenv
 RUN pipenv install --system
-RUN pip install autobahn networkx async_timeout gunicorn
+RUN pip install autobahn networkx async_timeout gunicorn dj-database-url
 RUN npm ci --only=production
 
 # Compile all the static files

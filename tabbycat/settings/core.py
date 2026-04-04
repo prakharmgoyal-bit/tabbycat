@@ -333,13 +333,13 @@ X_FRAME_OPTIONS = 'SAMEORIGIN' # Necessary to get Django-Summernote working beca
 # Database
 # ==============================================================================
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-    },
-}
+import dj_database_url
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
 
 # ==============================================================================
 # Channels
