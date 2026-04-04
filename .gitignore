@@ -8,10 +8,10 @@ __pycache__/
 # Compilation
 #tabbycat/staticfiles/
 #tabbycat/static/css/
-tabbycat/static/js/
-tabbycat/static/jsi18n/
+#tabbycat/static/js/
+#tabbycat/static/jsi18n/
 #tabbycat/static/vue/
-tabbycat/static/fonts/
+#tabbycat/static/fonts/
 
 # Translations
 .tx/
