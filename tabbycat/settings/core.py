@@ -15,6 +15,7 @@ ADMINS = ['"Tabbycat Debate" <contact@tabbycat-debate.org>']
 MANAGERS = ADMINS
 DEBUG = bool(int(os.environ['DEBUG'])) if 'DEBUG' in os.environ else False
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
 DISABLE_SENTRY = True # Overriden in Heroku config
 SECRET_KEY = r'#2q43u&tp4((4&m3i8v%w-6z6pp7m(v0-6@w@i!j5n)n15epwc'
