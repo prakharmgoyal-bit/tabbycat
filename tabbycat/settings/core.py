@@ -14,6 +14,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ADMINS = ['"Tabbycat Debate" <contact@tabbycat-debate.org>']
 MANAGERS = ADMINS
 DEBUG = bool(int(os.environ['DEBUG'])) if 'DEBUG' in os.environ else False
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
 DISABLE_SENTRY = True # Overriden in Heroku config
 SECRET_KEY = r'#2q43u&tp4((4&m3i8v%w-6z6pp7m(v0-6@w@i!j5n)n15epwc'
@@ -336,7 +337,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN' # Necessary to get Django-Summernote working beca
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', ''))
 }
 
 # ==============================================================================
@@ -347,7 +348,10 @@ ASGI_APPLICATION = "asgi.application"
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
     },
 }
 
