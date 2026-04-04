@@ -336,9 +336,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN' # Necessary to get Django-Summernote working beca
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 # ==============================================================================
