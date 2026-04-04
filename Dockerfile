@@ -38,4 +38,4 @@ ENV PYTHONPATH=/tcd
 
 EXPOSE 10000
 
-CMD python tabbycat/manage.py collectstatic --noinput -v 0 && python tabbycat/manage.py migrate && daphne -b 0.0.0.0 -p ${PORT:-10000} asgi:application
+CMD python tabbycat/manage.py collectstatic --noinput -v 0 && python tabbycat/manage.py migrate && daphne -b 0.0.0.0 -p ${PORT:-10000} tabbycat.asgi:application
