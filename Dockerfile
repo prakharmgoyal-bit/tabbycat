@@ -36,4 +36,6 @@ RUN python ./tabbycat/manage.py collectstatic --noinput -v 0
 
 ENV PYTHONPATH=/tcd
 
-CMD export DATABASE_URL=$DATABASE_URL && python tabbycat/manage.py migrate && gunicorn tabbycat.wsgi:application --bind 0.0.0.0:$PORT
+EXPOSE 10000
+
+CMD python tabbycat/manage.py migrate && gunicorn tabbycat.wsgi:application --bind 0.0.0.0:${PORT:-10000}
