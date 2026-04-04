@@ -2,13 +2,14 @@
 # run the application specified. docker-compose does not use this.
 
 # Grab a python image
-FROM python:3.10
+FROM python:3.11
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Just needed for all things python (note this is setting an env variable)
 ENV PYTHONUNBUFFERED 1
 # Needed for correct settings input
 ENV IN_DOCKER 1
+ENV NODE_OPTIONS=--max-old-space-size=1536
 
 # Setup Node/NPM
 RUN apt-get update
