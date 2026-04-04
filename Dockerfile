@@ -27,7 +27,7 @@ RUN git config --global url."https://".insteadOf git://
 # Install our node/python requirements
 RUN pip install pipenv
 RUN pipenv install --system
-RUN pip install autobahn networkx async_timeout gunicorn dj-database-url
+RUN pip install autobahn networkx async_timeout dj-database-url daphne
 RUN npm ci --only=production
 
 # Compile all the static files
@@ -38,4 +38,4 @@ ENV PYTHONPATH=/tcd
 
 EXPOSE 10000
 
-CMD python tabbycat/manage.py migrate && gunicorn tabbycat.wsgi:application --bind 0.0.0.0:${PORT:-10000}
+CMD python tabbycat/manage.py migrate && daphne -b 0.0.0.0 -p ${PORT:-10000} asgi:application
