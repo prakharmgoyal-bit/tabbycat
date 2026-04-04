@@ -34,7 +34,7 @@ RUN npm ci --only=production
 # Compile all the static files
 RUN npm run build
 
-ENV PYTHONPATH=/tcd
+ENV PYTHONPATH=/tcd:/tcd/tabbycat
 
 EXPOSE 10000
 
