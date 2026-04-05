@@ -42,6 +42,7 @@ drf-link-header-pagination = "*"
 networkx = "*" # Avoid its dependencies (SciPy)
 django-push-notifications = {extras = ["wp"], version = "*"}
 resend = "*"
+sib-api-v3-sdk = "*"
 
 [dev-packages]
 pre-commit = "*"
