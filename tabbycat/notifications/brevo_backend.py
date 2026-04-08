@@ -23,7 +23,7 @@ class BrevoEmailBackend(BaseEmailBackend):
             try:
                 send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(
                     to=[{"email": to} for to in message.to],
-                    sender={"email": message.from_email},
+                    sender={"email": message.from_email.split('<')[-1].replace('>', '').strip()},
                     subject=message.subject,
                     html_content=message.body,
                 )
