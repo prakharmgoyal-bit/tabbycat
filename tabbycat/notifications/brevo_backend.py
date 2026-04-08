@@ -30,6 +30,6 @@ class BrevoEmailBackend(BaseEmailBackend):
                 self.api_instance.send_transac_email(send_smtp_email)
                 num_sent += 1
             except ApiException as e:
-                if not self.fail_silently:
-                    raise e
+                print("BREVO ERROR:", e)
+                raise e
         return num_sent
