@@ -176,7 +176,6 @@ INSTALLED_APPS = (
     'drf_spectacular',
     'django_better_admin_arrayfield',
     'push_notifications',
-    'django_q',
 )
 
 ROOT_URLCONF = 'urls'
@@ -455,16 +454,3 @@ PUSH_NOTIFICATIONS_SETTINGS = {
 }
 ENABLE_PUSH_NOTIFICATIONS = os.environ.get("WP_PRIVATE_KEY") is not None
 
-# ==============================================================================
-# Django Q (Task Queue)
-# ==============================================================================
-
-Q_CLUSTER = {
-    'name': 'tabbycat',
-    'workers': 2,
-    'timeout': 90,
-    'retry': 120,
-    'queue_limit': 50,
-    'bulk': 10,
-    'orm': 'default',
-}
