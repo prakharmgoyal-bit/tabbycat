@@ -26,6 +26,7 @@ channels-redis = "*"
 ipython = "==7.*"
 munkres = "*"
 redis = "*"
+django-q2 = "*"
 qrcode = "*"
 html2text = "*"
 defusedxml = "*"
@@ -43,6 +44,8 @@ networkx = "*" # Avoid its dependencies (SciPy)
 django-push-notifications = {extras = ["wp"], version = "*"}
 resend = "*"
 sib-api-v3-sdk = "*"
+
+
 
 [dev-packages]
 pre-commit = "*"
