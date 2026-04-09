@@ -21,8 +21,14 @@ class BrevoEmailBackend(BaseEmailBackend):
         self.open()
         for message in email_messages:
             try:
+                to=[]
+                for recipient in message.to:
+                    if recipient and "@" in recipient:
+                        to.append({"email": recipient.strip()})
+                    else:
+                        print("INVALID EMAIL SKIPPED:", recipient)
                 send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(
-                    to=[{"email": to} for to in message.to],
+                    to=to,
                     sender={"email": message.from_email.split('<')[-1].replace('>', '').strip()},
                     subject=message.subject,
                     html_content=message.body,
