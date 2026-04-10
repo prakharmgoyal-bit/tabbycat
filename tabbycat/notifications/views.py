@@ -167,7 +167,7 @@ class EmailStatusView(AdministratorMixin, TournamentMixin, VueTableTemplateView)
                         },
                     }
                     emails_status.append(status_cell)
-                    emails_time.append({'text': formats.time_format(latest_status.timestamp.astimezone(tz=site_tz), use_l10n=True), 'sort': latest_status.timestamp})
+                    emails_time.append({'text': formats.time_format(latest_status.timestamp.astimezone(tz=site_tz), use_l10n=True), 'sort': latest_status.timestamp.isoformat()})
                 else:
                     emails_status.append(self.NA_CELL)
                     emails_time.append(self.NA_CELL)
