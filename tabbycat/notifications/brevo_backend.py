@@ -59,6 +59,11 @@ class BrevoEmailBackend(BaseEmailBackend):
                     sender=sender,
                     subject=message.subject,
                     html_content=message.body,
+                    html_content=next(
+                        (content for content, mimetype in getattr(message, 'alternatives', [])
+                        if mimetype == 'text/html'),
+                        None
+                    ),
                 )
                 self.api_instance.send_transac_email(send_smtp_email)
                 num_sent += 1
