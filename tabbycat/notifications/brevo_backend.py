@@ -58,7 +58,7 @@ class BrevoEmailBackend(BaseEmailBackend):
                     to=to,
                     sender=sender,
                     subject=message.subject,
-                    html_content=message.body,
+                    text_content=message.body,
                     html_content=next(
                         (content for content, mimetype in getattr(message, 'alternatives', [])
                         if mimetype == 'text/html'),
