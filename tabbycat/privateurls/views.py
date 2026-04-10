@@ -163,6 +163,7 @@ class EmailRandomisedUrlsView(RoleColumnMixin, TournamentTemplateEmailCreateView
     def get_extra(self) -> Dict[str, Any]:
         extra = super().get_extra()
         extra['url'] = self.request.build_absolute_uri(reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': '0'}))[:-2]
+        print("DEBUG URL BUILT:", extra['url'])
         return extra
 
     def get_table(self) -> TabbycatTableBuilder:
