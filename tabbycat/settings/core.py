@@ -109,6 +109,7 @@ FORMAT_MODULE_PATH = [
 # ==============================================================================
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -117,7 +118,6 @@ MIDDLEWARE = [
     # User language preferences; must be after Session
     'django.middleware.locale.LocaleMiddleware',
     # Set Etags; i.e. cached requests not on network; must precede Common
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
     # Must be after SessionMiddleware
